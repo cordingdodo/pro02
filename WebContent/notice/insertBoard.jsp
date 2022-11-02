@@ -20,31 +20,26 @@
 %>
 <div class="content container">
 	<h2 class="title">Notice</h2>
+	
 	<table class="table">
 		<tbody>
 			<tr>
-				<th>번호</th>
-				<td><%=vo.getNotiNo() %></td>
-			</tr>
-			<tr>
 				<th>제목</th>
-				<td><%=vo.getTitle() %></td>
+				<td><input type="text" id="title" name="title" placeholder="제목을 입력하세요" autofocus required></td>
+				<td><input type="hidden" id="notino" name="notino" readonly required<%=vo.getNotiNo() %>></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><%=vo.getContent() %></td>
+				<td><textarea cols=100 rows=8 id="content" title="content" placeholder="내용을 입력하세요" required></textarea> </td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><%=vo.getAuthor() %></td>
-			</tr>
-			<tr>
-				<th>작성일시</th>
-				<td><%=vo.getResDate() %></td>
+				<td><input type="text" id="author" name="author" value="admin" readonly required></td>
 			</tr>
 		</tbody>
 	</table>
 	<div class="btn-group">
+	<a href="GetBoardListCtrl" class="btn btn-danger">목록으로</a>
 		<a href="GetBoardListCtrl" class="btn btn-danger">목록으로</a>
 	</div>
 </div>

@@ -28,7 +28,7 @@ public class GetBoardListCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			//데이터베이스 연결
+			//데이터베이스 연결 
 			Class.forName(DRIVER);
 			sql = "select * from notice order by notino desc";
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
