@@ -1,12 +1,10 @@
-package kr.co.myshop.view;
+package kr.co.myshop.ctrl;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.myshop.vo.Notice;
 
-@WebServlet("/GetBoardDetailCtrl")
-public class GetBoardDetailCtrl extends HttpServlet {
+@WebServlet("/UpdateBoardCtrl")
+public class UpdateBoardCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop1?serverTimezone=Asia/Seoul";
@@ -41,7 +39,6 @@ public class GetBoardDetailCtrl extends HttpServlet {
 			pstmt.setInt(1, notiNo);
 			ResultSet rs = pstmt.executeQuery();
 			
-			//결과를 데이터베이스로 부터 받아서 VO에 저장
 			Notice vo = new Notice();
 			if(rs.next()){
 				vo.setNotiNo(rs.getInt("notino"));
@@ -53,7 +50,7 @@ public class GetBoardDetailCtrl extends HttpServlet {
 			request.setAttribute("notice", vo);
 			
 			//notice/boardList.jsp 에 포워딩
-			RequestDispatcher view = request.getRequestDispatcher("./notice/boardDetail.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./notice/updateBoard.jsp");
 			view.forward(request, response);
 			
 			rs.close();
@@ -63,4 +60,5 @@ public class GetBoardDetailCtrl extends HttpServlet {
 			e.printStackTrace();
 		}	
 	}
+	
 }

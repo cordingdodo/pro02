@@ -16,7 +16,9 @@ create table notice(
     commit;
     
     select * from notice order by notiNo desc;
+    delete from notice  where notiNo=7;
     
+    select * from custom;
     
     create table custom(
 	cusId varchar(20) primary key,

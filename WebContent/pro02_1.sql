@@ -13,3 +13,5 @@ create table custom(cusId varchar(20) primary key,
 	visited int default 0);
     
 show tables;
+
+insert into notice(title, content, author) values('제목1', '안냐세용', 'admin');

@@ -20,23 +20,21 @@
 %>
 <div class="content container">
 	<h2 class="title">Notice</h2>
+	<form class="frm1" action="UpdateBoardProCtrl" method="post">
 	<table class="table">
 		<tbody>
 			<tr>
-				<th>번호</th>
-				<td><%=vo.getNotiNo() %></td>
-			</tr>
-			<tr>
 				<th>제목</th>
-				<td><%=vo.getTitle() %></td>
+				<td><input type="text" name="title" id="title" value='<%=vo.getTitle() %>' required autofocus></td>
+				<td><input type="hidden" class="notiNo" name="notiNo" id="notiNo" value='<%=vo.getNotiNo() %>'readonly required></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><%=vo.getContent() %></td>
+				<td><textarea cols=80 rows=10 name="content" value='<%=vo.getContent() %>'required></textarea></td>			
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><%=vo.getAuthor() %></td>
+				<td><input type="text" name="author" id="author" value='<%=vo.getAuthor() %>'readonly required></td>
 			</tr>
 			<tr>
 				<th>작성일</th>
@@ -45,10 +43,11 @@
 		</tbody>
 	</table>
 	<div class="btn-group">
+		<button type="submit" class="btn btn-outline-primary">글 수정</button>
+		<button type="reset" class="btn btn-outline-primary">글 삭제</button>
 		<a href="./GetBoardListCtrl" class="btn btn-danger">목록으로</a>
-		<a href="DeleteBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn btn-outline-primary">글 삭제</a>
-		<a href="UpdateBoardCtrl?notiNo=<%=vo.getNotiNo() %>"class="btn btn-outline-primary">글 수정</a>
 	</div>
+	</form>
 </div>
 </body>
 </html>

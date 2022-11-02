@@ -12,7 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="common.css">
 <style>
-.title { padding-top:36px; padding-bottom:20px; }
+.title { padding-top:36px; padding-bottom:20px; text-align:center; color:#84c2f2; }
 </style>
 </head>
 <body>
@@ -25,7 +25,7 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>연번</th><th>제목</th><th>작성일</th>
+				<th>번호</th><th>제목</th><th>작성일</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,7 +41,7 @@
 		</tbody>
 	</table>
 	<div class="btn-group">
-		<a href="./notice/insertBoard.jsp" class="btn btn-danger">글 등록</a>
+		<a href="./notice/insertBoard.jsp" class="btn btn-outline-primary">글 등록</a>
 	</div>
 </div>
 </body>
