@@ -45,7 +45,7 @@
 		</tbody>
 	</table>
 	<div class="btn-group">
-		<a href="./GetBoardListCtrl" class="btn btn-danger">목록으로</a>
+		<a href="<%=request.getContextPath() %>/GetBoardListCtrl" class="btn btn-danger">목록으로</a>
 		<a href="DeleteBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn btn-outline-primary">글 삭제</a>
 		<a href="UpdateBoardCtrl?notiNo=<%=vo.getNotiNo() %>"class="btn btn-outline-primary">글 수정</a>
 	</div>

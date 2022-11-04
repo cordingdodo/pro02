@@ -16,8 +16,9 @@ create table notice(
     commit;
     
     select * from notice order by notiNo desc;
-    delete from notice  where notiNo=7;
+    delete from notice  where notiNo=14;
     
+    select * from custom;
     select * from custom;
     
     create table custom(
@@ -28,3 +29,6 @@ create table notice(
     tel varchar(30), 
 	regDate datetime default now()
     );
+    
+insert into custom(cusId, cusPw, cusName, address, tel) values ("admin", "1234", "관리자", "주소", 010-1004-1004);
+delete from custom where cusId=admin;

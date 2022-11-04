@@ -45,7 +45,7 @@
 	<div class="btn-group">
 		<button type="submit" class="btn btn-outline-primary">글 수정</button>
 		<button type="reset" class="btn btn-outline-primary">글 삭제</button>
-		<a href="./GetBoardListCtrl" class="btn btn-danger">목록으로</a>
+		<a href="GetBoardListCtrl" class="btn btn-danger">목록으로</a>
 	</div>
 	</form>
 </div>

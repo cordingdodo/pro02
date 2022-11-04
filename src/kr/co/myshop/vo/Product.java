@@ -5,7 +5,9 @@ public class Product {
 	private int cateNo; //카테고리 분류
 	private String proName;
 	private String proSpec; //상품규격
-	private int proPrice;
+	private int oriPrice; //원가
+	private double discountRate; //할인율
+	private int proPrice; //원가-할인율
 	private String proPic; //상품 이미지
 	public int getProNo() {
 		return proNo;
@@ -42,6 +44,18 @@ public class Product {
 	}
 	public void setProPic(String proPic) {
 		this.proPic = proPic;
+	}
+	public int getOriPrice() {
+		return oriPrice;
+	}
+	public void setOriPrice(int oriPrice) {
+		this.oriPrice = oriPrice;
+	}
+	public double getDiscountRate() {
+		return discountRate;
+	}
+	public void setDiscountRate(double discountRate) {
+		this.discountRate = discountRate;
 	}
 
 }

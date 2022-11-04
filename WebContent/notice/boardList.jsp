@@ -41,7 +41,7 @@
 		</tbody>
 	</table>
 	<div class="btn-group">
-		<a href="./notice/insertBoard.jsp" class="btn btn-outline-primary">글 등록</a>
+		<a href="<%=request.getContextPath() %>/notice/insertBoard.jsp" class="btn btn-outline-primary">글 등록</a>
 	</div>
 </div>
 </body>
