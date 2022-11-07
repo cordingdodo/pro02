@@ -29,7 +29,11 @@
     padding-left: 580px; 
     padding-bottom: 50px;
     padding-top:50px; }
-  #cusId { width:780px; float:left; margin-right:30px; margin-left:6px; }  
+  #cusId { width:780px; float:left; margin-right:30px; margin-left:6px; } 
+  .btn-group, .btn-group-vertical {     
+  	margin: 20px;
+    margin-left: 550px;
+    }
     </style>
 </head>
 <%@ include file="../header.jsp" %>
@@ -43,8 +47,7 @@
 					<th>아이디</th>
 					<td>
 						<div class="form_row">
-							<input type="text" id="cusId" name="cusId" class="form-control" placeholder="아이디 입력" class="form-control" value="<%=custom.getCusId() %>" autofocus required >
-							<button type="button" onclick="idCheck()" style="margin-left:20px" class="btn btn-outline-primary">아이디 중복 확인</button>
+							<input type="text" id="cusId" name="cusId" class="form-control" placeholder="아이디 입력" class="form-control" value="<%=custom.getCusId() %>" autofocus required readonly>
 							<input type="hidden" name="idck" value="no">
 						</div>
 					</td>

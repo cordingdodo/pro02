@@ -5,8 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,54 +13,59 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.myshop.vo.Notice;
+import kr.co.myshop.vo.Custom;
 
-@WebServlet("/GetBoardDetailCtrl")
-public class GetBoardDetailCtrl extends HttpServlet {
+@WebServlet("/GetCustomDetailCtrl")
+public class GetCustomDetailCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop1?serverTimezone=Asia/Seoul";
 	private final static String USER = "root";
 	private final static String PASS = "a1234";
 	String sql = "";
-	//트랜잭션 처리시에는 같이 처리될 수 있도록 오토커밋을 꺼야함
-
+	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		int notiNo = Integer.parseInt(request.getParameter("notiNo"));
+		String cusId = request.getParameter("cusId");
 	
 		try {
 			//데이터베이스 연결
 			Class.forName(DRIVER);
-			sql = "select * from notice where notino=?";
+			sql = "select * from custom where cusId=?";
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
-			
-			//트랜잭션 처리시에는 같이 처리될 수 있도록 오토커밋을 꺼야함
-			con.setAutoCommit(false);
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, notiNo);
+			pstmt.setString(1, cusId);
 			ResultSet rs = pstmt.executeQuery();
+			String key = "%02x";
+			String compPw = "";
+			String cusPw = "";
 			
-			//결과를 데이터베이스로 부터 받아서 VO에 저장
-			Notice vo = new Notice();
+			Custom vo = new Custom();
 			if(rs.next()){
-				//해당 글이 있는 경우에만 횟수를 1 증가시킴
-				vo.setNotiNo(rs.getInt("notino"));
-				vo.setTitle(rs.getString("title"));
-				vo.setContent(rs.getString("content"));
-				vo.setAuthor(rs.getString("author"));
-				vo.setResDate(rs.getString("resdate"));
+				vo.setCusId(rs.getString("cusid"));
+				cusPw = rs.getString("cusPw");
+				//compPw = AES256.decryptAES256(cusPw, key);
+				vo.setCusPw(cusPw);
+				vo.setCusName(rs.getString("cusname"));
+				vo.setAddress(rs.getString("address"));
+				vo.setTel(rs.getString("tel"));
+				vo.setRegDate(rs.getString("regdate"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setLevel(rs.getInt("level"));
+				vo.setVisited(rs.getInt("visited"));
+			} else {
+				response.sendRedirect("./custom/login.jsp");
+				
 			}
-			request.setAttribute("notice", vo);
+			request.setAttribute("custom", vo);
 			
 			//notice/boardList.jsp 에 포워딩
-			RequestDispatcher view = request.getRequestDispatcher("./notice/boardDetail.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./admin/customDetail.jsp");
 			view.forward(request, response);
 			
-			rs.close();
 			pstmt.close();
 			con.close();
 		} catch (Exception e) {

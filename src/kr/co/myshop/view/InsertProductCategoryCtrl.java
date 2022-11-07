@@ -15,51 +15,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.myshop.vo.Notice;
+import kr.co.myshop.vo.Category;
 
-@WebServlet("/GetBoardDetailCtrl")
-public class GetBoardDetailCtrl extends HttpServlet {
+@WebServlet("/InsertProductCategoryCtrl")
+public class InsertProductCategoryCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop1?serverTimezone=Asia/Seoul";
 	private final static String USER = "root";
 	private final static String PASS = "a1234";
 	String sql = "";
-	//트랜잭션 처리시에는 같이 처리될 수 있도록 오토커밋을 꺼야함
-
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		int notiNo = Integer.parseInt(request.getParameter("notiNo"));
-	
 		try {
 			//데이터베이스 연결
 			Class.forName(DRIVER);
-			sql = "select * from notice where notino=?";
+			sql = "select * from category";
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
-			
-			//트랜잭션 처리시에는 같이 처리될 수 있도록 오토커밋을 꺼야함
-			con.setAutoCommit(false);
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, notiNo);
 			ResultSet rs = pstmt.executeQuery();
 			
-			//결과를 데이터베이스로 부터 받아서 VO에 저장
-			Notice vo = new Notice();
-			if(rs.next()){
-				//해당 글이 있는 경우에만 횟수를 1 증가시킴
-				vo.setNotiNo(rs.getInt("notino"));
-				vo.setTitle(rs.getString("title"));
-				vo.setContent(rs.getString("content"));
-				vo.setAuthor(rs.getString("author"));
-				vo.setResDate(rs.getString("resdate"));
+			//결과를 데이터베이스로 부터 받아서 리스트로 저장
+			List<Category> cateList = new ArrayList<Category>();
+			while(rs.next()){
+				Category vo = new Category();
+				vo.setCateNo(rs.getInt("cateno"));
+				vo.setCateName(rs.getString("catename"));
+				cateList.add(vo);
 			}
-			request.setAttribute("notice", vo);
-			
+			request.setAttribute("cateList", cateList);
 			//notice/boardList.jsp 에 포워딩
-			RequestDispatcher view = request.getRequestDispatcher("./notice/boardDetail.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./product/insertProduct.jsp");
 			view.forward(request, response);
 			
 			rs.close();

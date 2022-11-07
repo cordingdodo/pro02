@@ -68,7 +68,7 @@
 	    			<span class="nav-link"><%=sname %>님</span>
 	    		</li>
 	    		<li class="nav-item">
-	    			<a class="nav-link active" href="<%=request.getContextPath()%>/LogoutCtrl">로그아웃</a>
+	    			<a class="nav-link active" href="<%=request.getContextPath()%>/LogOutCtrl">로그아웃</a>
 	    		</li>
 	    		<li class="nav-item">
 	    			<a class="nav-link active" href="<%=request.getContextPath()%>/GetCustomInfoCtrl">회원정보</a>
