@@ -63,10 +63,10 @@
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td><input type="text" id="address1" name="address1" class="form-control" placeholder="주소 입력"><br>
-					<input type="text" id="address2" name="address2" class="form-control"  placeholder="상세 주소 입력"><br>
+					<td><input type="text" id="address1" name="address1" class="form-control" placeholder="주소 입력" required><br>
+					<input type="text" id="address2" name="address2" class="form-control"  placeholder="상세 주소 입력" required><br>
 					<input type="text" name="postcode" id="postcode" style="width:160px;float:left; margin-right:20px;" placeholder="우편번호" class="form-control" required/>
-					<button id="post_btn" onclick="findAddr()" class="btn btn-outline-primary" >우편번호</button>
+					<button id="post_btn" onclick="findAddr()" class="btn btn-outline-primary" >우편번호 검색</button>
 					</td>
 				</tr>
 				<tr>

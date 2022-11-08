@@ -52,6 +52,8 @@ alter table product auto_increment = 1;
 	proPic2 varchar(300)
     );
     
+    alter table product add column amount int;
+    
     
 create table category(
 cateNo int primary key auto_increment,
@@ -67,10 +69,47 @@ insert into category(cateName) values("Bag");
 insert into category(cateName) values("Etc");
 
 select * from category;
+select * from product;
 commit;
 
 drop table wearing;
+
+select * from wearing;
+
 create table wearing(
 proNo int primary key,
 amount int
 );
+
+-- 결제테이블 추가
+create table payMent(
+salePayNo int primary key auto_increment, 
+payMethod varchar(30)  not null,
+payCom varchar(50)  not null,
+cardNum varchar(40)  not null,
+payAmount int not null);
+
+select * from parsel;
+select * from sales;
+
+
+-- 배송테이블 추가
+create table parsel(
+parselNo int primary key auto_increment,
+parselAddr varchar(500),
+cusTel varchar(14),
+parselCompany varchar(50),
+parselTel varchar(20),
+parselState int default 0);
+
+-- 결제 테이블 추가
+create table sales(
+saleNo int primary key auto_increment,
+cusId varchar(13) not null,
+proNo int not null,
+amount int not null,
+saleDate datetime default now(),
+parselNo int,
+salePayNo int);
+
+alter table sales add column parselState int default 0;
