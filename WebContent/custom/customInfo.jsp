@@ -15,6 +15,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="common.css">
 <style>
+.title {
+    padding-top: 36px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #7BB1E8;
+}
  .h2, h3 {    
  	font-size: 2rem;
     padding-top: 30px;
@@ -145,4 +151,5 @@ function updateCheck(f){
 	}
 	</script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<%@ include file="../footer.jsp" %>
 </html>

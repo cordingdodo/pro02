@@ -34,7 +34,7 @@ public class UpdateSalesProCtrl extends HttpServlet {
 		if(request.getParameter("address1")!=null){
 			parselAddr = request.getParameter("address1")+" "+request.getParameter("address2");
 		}
-		String cusTel = request.getParameter("custel");
+		String cusTel = request.getParameter("cusTel");
 	
 		try {
 			//데이터베이스 연결

@@ -11,7 +11,7 @@
  .btn-outline-success:hover {
     color: #fff;
     background-color: #84c2ef;
-    border-color: #84c2ef;
+    border-color: #84c2ef; }
  .navbar-light .navbar-brand { color: #7bb1e8;}
  .body {color : #71797e;}
  
@@ -25,13 +25,13 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Swingset<span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="<%=request.getContextPath() %>/swingset/swingset.jsp">Swingset<span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item dropdown">
 	     	<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
 	          Archive</a>
 	          <div class="dropdown-menu">
-	          <a class="dropdown-item" href="#">22SS</a>
+	          <a class="dropdown-item" href="<%=request.getContextPath() %>/archive/22SS.jsp">22SS</a>
 	        </div>
 	      </li>
 	      <li class="nav-item dropdown">
@@ -39,27 +39,29 @@
 	          Shop
 	        </a>
 	        <div class="dropdown-menu">
-	          <a class="dropdown-item" href="#">RING</a>
-	          <a class="dropdown-item" href="#">EARRINGS</a>
+	          <a class="dropdown-item" href="<%=request.getContextPath() %>/GetProductItemListCtrl?cateNo=1">RING</a>
+	          <a class="dropdown-item" href="<%=request.getContextPath() %>/GetProductItemListCtrl?cateNo=2">EARRINGS</a>
 	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="#">NECKLACE</a>
-	          <a class="dropdown-item" href="#">HAIR</a>
+	          <a class="dropdown-item" href="<%=request.getContextPath() %>/GetProductItemListCtrl?cateNo=3">NECKLACE</a>
+	          <a class="dropdown-item" href="<%=request.getContextPath() %>/GetProductItemListCtrl?cateNo=4">HAIR</a>
 	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="#">KEYRING</a>
+	          <a class="dropdown-item" href="<%=request.getContextPath() %>/GetProductItemListCtrl?cateNo=5">KEYRING</a>
 	        </div>
 	      <li class="nav-item">
-	        <a class="nav-link" href="#">Press</a>
+	        <a class="nav-link" href="<%=request.getContextPath()%>/press/press.jsp">Press</a>
 	      </li>
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="true">
-	          Community
+	          Board
 	        </a>
 	        <div class="dropdown-menu">
 	          <a class="dropdown-item" href="<%=request.getContextPath() %>/GetBoardListCtrl">Notice</a>
 	          <a class="dropdown-item" href="#">Q&A</a>
 	          <a class="dropdown-item" href="#">Use After</a>
-	          <a class="dropdown-item" href="./custom/membership.jsp">join</a>
 	        </div>
+	      </li>
+	     <li class="nav-item">
+	        <a class="nav-link" href="<%=request.getContextPath()%>/stockist/stockist.jsp">stockist</a>
 	      </li>
 	    </ul>
 	    <ul class="nav justify-content-end">

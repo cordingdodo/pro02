@@ -12,9 +12,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="common.css">
 <style>
-.title { padding-top:36px; padding-bottom:20px; }
-</style>
-<style>
+    .title {
+    padding-top: 50px;
+    padding-bottom: 40px;
+    text-align: center;
+    color: #7BB1E8; }
+div#content {
+    width: 1200px;
+}
 .in_container { clear:both; width:1400px; margin:0 auto; }
 .in_container:after { content:""; display:block; clear:both; }
 .card-title { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
@@ -29,9 +34,40 @@
 <%@ include file="../header.jsp" %>
 <%
 	List<Product> proList = (ArrayList<Product>) request.getAttribute("proList");
-%>
+	int cateNo = 0;
+	cateNo = (int) request.getAttribute("cateNo");
+	String cateName = "";
+	if(cateNo!=0){ 
+		if(cateNo==1){
+			cateName= "RING";
+		} else if(cateNo==2){
+			cateName= "EARRINGS";
+		} else if(cateNo==3){
+			cateName= "NECKLACE";
+		} else if(cateNo==4){
+			cateName= "HAIR";
+		} else if(cateNo==5) {
+			cateName= "KEYRING";
+		} else {
+			cateName= "제품 목록";
+	
+		
+	if(sid!=null) {
+		sid = sid;
+	} else {
+		sid = "guest";
+	}
+	
+	}
+	
+	}
+%>  
+	<ol class="breadcrumb bg-transparent" style="float:right;">
+    <li class="breadcrumb-item"><a href="<%=request.getContextPath() %>/index.jsp">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%=cateName %></li>
+  </ol>
 <div class="content container" id="content">
-	<h2 class="title">제품 목록</h2>
+	<h2 class="title"><%=cateName %></h2>
 	<ul class="row" id="best">
 	<% for(int i=0;i<proList.size();i++) {
 		Product pro = proList.get(i);
@@ -49,7 +85,7 @@
 			</li>
 		<% } %>
 		<% if(proList.size()==0) { %>
-				<li style="width:1000px;">
+				<li style="width:1000px; ">
 				<hr>
 				<p>해당 카테고리의 상품이 존재하지 않습니다.</p>
 				<hr>
@@ -60,8 +96,9 @@
 		<div class="btn-group">
 			<a href="<%=request.getContextPath() %>/InsertProductCategoryCtrl" class="btn btn-danger">상품 등록</a>
 		</div>
-		<% } %>		
+		<% } %>					
 	</div>
+	
 <%@ include file="../footer.jsp" %>
 </body>
 </html>

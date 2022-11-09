@@ -24,6 +24,12 @@
     padding-left: 580px; 
     padding-bottom: 50px;
     padding-top:50px; }
+    .title {
+    padding-top: 36px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #7BB1E8;
+}
    
   
     </style>
@@ -207,4 +213,5 @@ ID, 성명, 비밀번호, 주소, 휴대폰 번호, 이메일, 14세 미만 가�
 		});
 	</script>
 </body>
+<%@ include file="../footer.jsp" %>
 </html>

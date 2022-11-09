@@ -54,19 +54,17 @@ alter table product auto_increment = 1;
     
     alter table product add column amount int;
     
-    
+drop table category;
 create table category(
 cateNo int primary key auto_increment,
 cateName varchar(50)
 );
 
-insert into category(cateName) values("Ring");
-insert into category(cateName) values("Earring");
-insert into category(cateName) values("Necklace");
-insert into category(cateName) values("Bracelet");
-insert into category(cateName) values("Hair");
-insert into category(cateName) values("Bag");
-insert into category(cateName) values("Etc");
+insert into category(cateName) values("RING");
+insert into category(cateName) values("EARRING");
+insert into category(cateName) values("NECKLACE");
+insert into category(cateName) values("HAIR");
+insert into category(cateName) values("KEYRING");
 
 select * from category;
 select * from product;
@@ -75,6 +73,10 @@ commit;
 drop table wearing;
 
 select * from wearing;
+select * from product;
+
+alter table category rename column "Bracelet" to 
+select * from category;
 
 create table wearing(
 proNo int primary key,
@@ -91,6 +93,8 @@ payAmount int not null);
 
 select * from parsel;
 select * from sales;
+
+alter table parsel add column balecode int;
 
 
 -- 배송테이블 추가
@@ -113,3 +117,9 @@ parselNo int,
 salePayNo int);
 
 alter table sales add column parselState int default 0;
+
+alter table sales drop column parselState;
+
+rollback;
+
+update parsel set parselCompany = '대한통운', paresltel = 01045789303, parselstate=0, balecode=666633337777  where parselNo=1;

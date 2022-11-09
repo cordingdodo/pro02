@@ -11,6 +11,8 @@ public class Product {
 	private String proPic; //상품 이미지
 	private String proPic2;
 	private int amount; //재고수량
+	//조회수 +디테일에 추가
+	//등록일자
 	public int getProNo() {
 		return proNo;
 	}
