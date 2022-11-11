@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.myshop.vo.Parsel;
 
-@WebServlet("/UpdateSalesCtrl")
-public class UpdateSalesCtrl extends HttpServlet {
+@WebServlet("/UpdateParselCtrl")
+public class UpdateParselCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop1?serverTimezone=Asia/Seoul";
 	private final static String USER = "root";
 	private final static String PASS = "a1234";
 	String sql = "";
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -52,7 +52,7 @@ public class UpdateSalesCtrl extends HttpServlet {
 			request.setAttribute("parsel", vo);
 			
 			//notice/boardList.jsp 에 포워딩
-			RequestDispatcher view = request.getRequestDispatcher("./parsel/updateSales.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./parsel/updateParsel.jsp");
 			view.forward(request, response);
 			
 			rs.close();
